@@ -24,7 +24,7 @@ function jump() {
     setTimeout(() => {
         dino.classList.remove('jump');
         isJumping = false;
-    }, 400); // Время прыжка
+    }, 400); 
 }
 
 function createObstacle() {
@@ -32,7 +32,7 @@ function createObstacle() {
     obstacle.className = 'obstacle';
     document.getElementById('gameArea').appendChild(obstacle);
     
-    let hasPassed = false; // Флаг для отслеживания, успешно ли препятствие перепрыгнуто
+    let hasPassed = false; 
 
     obstacle.addEventListener('animationend', () => {
         obstacle.remove();
@@ -48,18 +48,18 @@ function createObstacle() {
             dinoRect.y < obstacleRect.y + obstacleRect.height &&
             dinoRect.y + dinoRect.height > obstacleRect.y
         ) {
-            // Если коллизия, игра окончена
+           
             clearInterval(obstacleInterval);
             alert(`Игра окончена! Ваш счет: ${score}`);
             saveScore(score);
             location.reload();
         }
 
-        // Проверка на успешное перепрыгивание
+        
         if (!hasPassed && dinoRect.x + dinoRect.width < obstacleRect.x) {
             score++;
-            hasPassed = true; // Зафиксируем, что мы уже перепрыгнули
-            updateScore(); // Обновляем счет
+            hasPassed = true; 
+            updateScore(); 
         }
     }, 10);
 }
@@ -83,5 +83,5 @@ function saveScore(score) {
     .then(data => console.log(data));
 }
 
-// Запускаем игру
+
 startGame();
